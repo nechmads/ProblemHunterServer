@@ -26,13 +26,8 @@ const problemSchema = new mongoose.Schema({
     comments: {
         type: Number,
         default: 0
-    },
-    
-    created_at: {
-        type: Date,
-        default: Date.now
     }
-});
+}, {timestamps: true});
 
 problemSchema.statics.increaseUpvotes = (problemId, numberOfUpvotes) => {
     return Problem.update({_id: problemId}, {$inc: {upvotes: numberOfUpvotes}}).exec();

@@ -3,6 +3,7 @@
 import Problem from '../models/problem';
 import Vote from '../models/vote';
 import Comment from '../models/comment';
+import moment from 'moment';
 
 class ProblemsController {
     /**
@@ -46,6 +47,23 @@ class ProblemsController {
         newComment.details = description;
 
         return newComment.save();
+    }
+
+    /*static getProblems(start = "01/01/1970", limit = 100) {
+        return Problem.find({createdAt: {$gt: moment(start, 'MM/DD/YYYY').toDate()}}).limit(limit).sort({_id : 1});
+    }*/
+
+    static getProblems(start = null, limit = 100) {
+        if (start == null || start == ""){
+            return Problem.find({}).limit(limit).sort({_id : 1});
+        }
+        else {
+            return Problem.find({_id: {$gt: start}}).limit(limit).sort({_id : 1});
+        }        
+    }
+
+    static getProblem(problemId) {
+        return Problem.findById(problemId);
     }
 }
 

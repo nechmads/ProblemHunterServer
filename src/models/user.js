@@ -28,13 +28,9 @@ const userSchema = new mongoose.Schema({
 
     apiKey: {
         type: String
-    },
-
-    created_at: {
-        type: Date,
-        default: Date.now
     }
-});
+    
+}, {timestamps: true});
 
 let User = mongoose.model('User', userSchema);
 

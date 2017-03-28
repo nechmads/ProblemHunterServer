@@ -1,5 +1,6 @@
 import Problem from '../src/models/problem';
 import Vote from '../src/models/vote';
+import User from '../src/models/user';
 import mongoose from 'mongoose';
 import chai from 'chai';
 chai.should();
@@ -17,9 +18,9 @@ class TestManager {
         }    
     }
 
-    static initializeDemoData() {
+    static initializeDemoData(numberOfProblems = 10) {        
         let problems = [];
-        for (let x = 0; x < 10; x++){
+        for (let x = 0; x < numberOfProblems; x++){
             let newProblem = new Problem();
             newProblem.title = `This is a title ${x}`;
             newProblem.description = `This is the description ${x}`;
@@ -33,7 +34,7 @@ class TestManager {
     }
 
     static cleanDatabase() {
-        return Promise.all([Vote.remove({}),Problem.remove({})]);
+        return Promise.all([Vote.remove({}),Problem.remove({}), User.remove({})]);
     }
 }
 

@@ -12,13 +12,9 @@ const voteSchema = new mongoose.Schema({
     problem: {
         type: mongoose.Schema.ObjectId,
         ref: 'Problem'
-    },
-
-    created_at: {
-        type: Date,
-        default: Date.now
     }
-});
+    
+}, {timestamps: true});
 
 voteSchema.post('save', function(vote, next){
     Problem.increaseUpvotes(vote.problem, 1, function(){});

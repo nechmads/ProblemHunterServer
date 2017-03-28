@@ -17,13 +17,9 @@ const commentSchema = new mongoose.Schema({
     problem: {
         type: mongoose.Schema.ObjectId,
         ref: 'Problem'
-    },
-
-    created_at: {
-        type: Date,
-        default: Date.now
     }
-});
+
+}, {timestamps: true});
 
 commentSchema.post('save', function(comment, next){
     Problem.increaseComments(comment.problem, 1, function(){});
