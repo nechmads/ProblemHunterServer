@@ -2,10 +2,15 @@ import User from './user';
 
 const Problem = `
     type Problem {
+        # The id of the problem
         id: String!
+        # The problem title
         title: String!
+        #The problem description
         description: String!
+        # The number of upvotes the problem recieved
         upvotes: Int!,
+        # The user who posted this problem
         user: User      
     }
 `;

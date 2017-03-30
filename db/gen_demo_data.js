@@ -26,6 +26,7 @@ function createUsers() {
         newUser.email = Faker.internet.email();
         newUser.firstName = Faker.name.firstName();
         newUser.lastName = Faker.name.lastName();
+        newUser.facebookId = Faker.internet.userName();
         newUser.password = Faker.internet.password();
         newUser.apiKey = Faker.random.uuid();
                 
@@ -39,14 +40,14 @@ function createProblems() {
     return User.find({}).then((users) => {    
         let promisses  = [];
 
-        for (let userIndex = 0; userIndex < 10; userIndex++) {
-            console.log(userIndex);
+        for (let userIndex = 0; userIndex < 10; userIndex++) {            
             if (userIndex % 2 === 0) {
                 const numberOfProblemsToCreate = getRandomInt(1, 10);
                 for (let problemIndex = 1; problemIndex < numberOfProblemsToCreate; problemIndex++) {
                     let newProblem = new Problem();
                     newProblem.title = Faker.lorem.sentence();
                     newProblem.description = Faker.lorem.paragraph();
+                    newProblem.user = users[userIndex];
 
                     promisses.push(newProblem.save());                    
                 }

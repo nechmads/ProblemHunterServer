@@ -1,10 +1,17 @@
 const User = `
     type User {
+        # The user ID
         id: String!
-        email: String!
-        facebook_id: String!
-        first_name: String!
-        last_name: String!        
+        # The user email
+        email: String!   
+        # The user facebook id
+        facebookId: String!
+        # The user first name
+        firstName: String!
+        # The user last name
+        lastName: String!
+        # The problems owned by this user
+        problems:[Problem]             
     }    
 `;
 

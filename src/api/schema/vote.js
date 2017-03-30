@@ -3,7 +3,9 @@ import Problem from './problem';
 
 const Vote = `
     type Vote {
+        # The user who posted this vote
         user: User
+        # The problem that the vote was voted on
         problem: Problem
     }
 `;

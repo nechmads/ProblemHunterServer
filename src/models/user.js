@@ -9,16 +9,16 @@ const userSchema = new mongoose.Schema({
         index: true
     },
 
-    facebook_id: {
+    facebookId: {
         type: String,
         index: true
     },
 
-    first_name: {
+    firstName: {
         type: String
     },
 
-    last_name: {
+    lastName: {
         type: String
     },
 

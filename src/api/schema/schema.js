@@ -5,7 +5,8 @@ import {makeExecutableSchema} from 'graphql-tools';
 
 const SchemaDefinition = `
     type Query {
-        problems: [Problem]
+        # Query to load a list of problems posted into the system
+        problems(limit: Int, start: String): [Problem]
     }
 `;
 
